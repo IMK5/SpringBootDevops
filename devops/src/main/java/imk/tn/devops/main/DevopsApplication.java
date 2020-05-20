@@ -1,5 +1,4 @@
-package imk.tn.devops;
-
+package imk.tn.devops.main;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
