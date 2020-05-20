@@ -9,10 +9,21 @@ node {
 	url: 'https://github.com/IMK5/SpringBootDevops.git'
    }
    
-    stage('Mvn Package'){
-	   // Build using maven
-	   
-	   sh "mvn clean install package"
-   }
+    stage('Build') {
+            steps {
+                sh 'mvn -B -DskipTests clean package'
+            }
+        }
+        
+        stage('Test') { 
+            steps {
+                sh 'mvn test' 
+            }
+            post {
+                always {
+                    junit 'target/surefire-reports/*.xml' 
+                }
+            }
+        }
    
    }
