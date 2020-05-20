@@ -12,7 +12,7 @@ node {
     stage('Mvn Package'){
 	   // Build using maven
 	   
-	   bat "mvn clean install package"
+	   sh "mvn clean install package"
    }
    
    }
