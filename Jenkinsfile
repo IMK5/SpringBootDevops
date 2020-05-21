@@ -14,5 +14,10 @@ node {
 	   
 	   sh "mvn clean install package"
    }
+   stage('Deliver') {
+            steps {
+                sh 'deliver.sh'
+            }
+        }
    
    }
