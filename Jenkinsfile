@@ -21,7 +21,9 @@ node {
 		}
 		
 	}finally{
-		junit 'target/surefire-reports/*.xml'
+		//junit 'target/surefire-reports/*.xml'
+		junit 'tests/results/*.xml'
+		
 	}
  
    stage('Deliver') {
