@@ -15,16 +15,15 @@ node {
 	   
 	   sh 'mvn -B -DskipTests clean package'
    }
-   stage('Test') {
-            
-                sh 'mvn test'
-            
-            post {
-                always {
-                    junit 'target/surefire-reports/*.xml'
-                }
-            }
-        }
+	try{
+		stage('Test') {
+                	sh 'mvn test'
+		}
+		
+	}finally{
+		junit 'target/surefire-reports/*.xml'
+	}
+ 
    stage('Deliver') {
             //steps {
 	   
