@@ -1,10 +1,5 @@
 node {
-	agent {
-        docker {
-            image 'maven:3-alpine' 
-            args '-v /root/.m2:/root/.m2' 
-        }
-    }
+	
    // This is to demo github action	
   // def sonarUrl = 'sonar.host.url=http://172.31.30.136:9000'
    //def mvn = tool (name: 'maven3', type: 'maven') + '/bin/mvn'
@@ -15,11 +10,21 @@ node {
 	url: 'https://github.com/IMK5/SpringBootDevops.git'
    }
    
-    stage('Mvn Package'){
+    stage('Build'){
 	   // Build using maven
 	   
-	   sh "mvn clean install package"
+	   sh 'mvn -B -DskipTests clean package'
    }
+   stage('Test') {
+            
+                sh 'mvn test'
+            
+            post {
+                always {
+                    junit 'target/surefire-reports/*.xml'
+                }
+            }
+        }
    stage('Deliver') {
             //steps {
 	   
