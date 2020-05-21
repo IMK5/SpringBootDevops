@@ -16,6 +16,7 @@ node {
    }
    stage('Deliver') {
             //steps {
+	   chmod +x ./scripts/deliver.sh
                 sh './scripts/deliver.sh'
             //}
         }
