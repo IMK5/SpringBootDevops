@@ -23,7 +23,7 @@ node {
 	}finally{
 		sh 'echo TODO'
 		//junit 'target/surefire-reports/*.xml'
-		junit 'reports/**/*.xml'
+		// junit 'reports/**/*.xml'
 		
 	}
  
