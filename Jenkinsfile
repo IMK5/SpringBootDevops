@@ -32,7 +32,7 @@ node {
              //   sh ' chmod +x  ./scripts/deliver.sh'
 	      //  sh './scripts/deliver.sh'
             sshagent (credentials: ['tomcat-credential']) {
-             sh 'scp -o StrictHostKeyChecking=no target/*.war   admin@127.0.01:8080 '
+             sh 'scp -o StrictHostKeyChecking=no target/*.war   admin@127.0.0.1:8080 '
   }
         }
    
