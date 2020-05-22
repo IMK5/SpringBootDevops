@@ -27,12 +27,13 @@ node {
 		
 	}
  
-   stage('Deliver') {
-            //steps {
-	   
-                sh ' chmod +x  ./scripts/deliver.sh'
-	   sh './scripts/deliver.sh'
-            //}
+   stage('Deliver Or deploy') {
+            // If you want to use an external sh file for that:
+             //   sh ' chmod +x  ./scripts/deliver.sh'
+	      //  sh './scripts/deliver.sh'
+            sshagent (credentials: ['tomcat-credential']) {
+             sh 'scp -o StrictHostKeyChecking=no target/*.war   admin@127.0.01:8080 '
+  }
         }
    
    }
