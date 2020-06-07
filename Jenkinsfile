@@ -26,7 +26,7 @@ node {
     }
      stage('Push Docker Image To dockerHub'){
              echo'Log to Dockerhub'
-             withCredentials([string(credentialsId: 'dockerHubPWD', variable: 'dockerHubPWD')]) 
+             withCredentials([string(credentialsId: 'dockerHubPWD', variable: 'dockerHubPWD')]){ 
                  sh "docker login -u issaoui -p ${dockerHubPWD}"
              }
              
@@ -34,5 +34,5 @@ node {
        sh 'docker push issaoui/imk:0.0.1'
    }    
    
-   }
    
+  } 
